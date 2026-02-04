@@ -1,2 +1,7 @@
-.env
 node_modules
+.env
+cache
+artifacts
+coverage
+dist
+.DS_Store
