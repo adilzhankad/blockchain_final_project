@@ -1,0 +1,32 @@
+await crowd.connect(alice).contribute(0, { value: ethers.parseEther("0.1") });
+);
+  3600
+  ethers.parseEther("1"),
+  "Humanitarian delivery: medicines",
+  "Aid shipment #1",
+await crowd.createCampaign(
+);
+  "0x0165878A594ca255338adfa4d48449f69242Eb8F"
+  "Crowdfunding",
+const crowd = await ethers.getContractAt(
+);
+  "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+  "RewardToken",
+const token = await ethers.getContractAt(
+alice.address
+owner.address
+const [owner, alice] = await ethers.getSigners();
+await token.balanceOf(alice.address)
+// 3) проверяем сколько токенов у alice
+await crowd.connect(alice).contribute(0, { value: ethers.parseEther("0.1") });
+// 2) alice донатит 0.1 ETH в кампанию 0
+);
+  3600
+  ethers.parseEther("1"),
+  "Humanitarian delivery: medicines",
+  "Aid shipment #1",
+await crowd.createCampaign(
+// 1) создаём кампанию: цель 1 ETH, длительность 1 час
+const crowd = await ethers.getContractAt("Crowdfunding", "0x0165878A594ca255338adfa4d48449f69242Eb8F");
+const token = await ethers.getContractAt("RewardToken", "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707");
+const [owner, alice] = await ethers.getSigners();
