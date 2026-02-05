@@ -29,6 +29,7 @@ contract Crowdfunding {
     event Contributed(uint256 indexed id, address indexed contributor, uint256 amountWei, uint256 tokensMinted);
     event Finalized(uint256 indexed id);
     event FundsWithdrawn(uint256 indexed id, address creator, uint256 amount); 
+    event Refunded(uint256 indexed id, address indexed contributor, uint256 amount);
 
     constructor(address rewardTokenAddress) {
         rewardToken = IRewardToken(rewardTokenAddress);
@@ -113,5 +114,25 @@ contract Crowdfunding {
         require(success, "Transfer failed");
 
         emit FundsWithdrawn(campaignId, c.creator, amount);
+    }
+
+    /**
+ * @dev
+ */
+    function refund(uint256 campaignId) external {
+        Campaign storage c = campaigns[campaignId];
+
+        require(block.timestamp >= c.deadline, "Campaign still active");
+        require(c.totalRaisedWei < c.goalWei, "Goal reached");
+
+        uint256 amount = contributions[campaignId][msg.sender];
+        require(amount > 0, "No contribution");
+
+        contributions[campaignId][msg.sender] = 0;
+
+        (bool success, ) = payable(msg.sender).call{value: amount}("");
+        require(success, "Transfer failed");
+
+        emit Refunded(campaignId, msg.sender, amount);
     }
 }

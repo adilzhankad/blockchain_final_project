@@ -9,45 +9,43 @@ describe("Crowdfunding", function () {
 
     const Token = await ethers.getContractFactory("RewardToken");
     const token = await Token.deploy();
-    const tokenAddress = await token.getAddress();
-
+    
     const Crowd = await ethers.getContractFactory("Crowdfunding");
-    const crowd = await Crowd.deploy(tokenAddress);
-    const crowdAddress = await crowd.getAddress();
+    const crowd = await Crowd.deploy(await token.getAddress());
+    
+    await token.setMinter(await crowd.getAddress());
 
-    await token.setMinter(crowdAddress);
-
-    return { crowd, token, owner, creator, donor1, crowdAddress };
+    return { crowd, token, owner, creator, donor1, crowdAddress: await crowd.getAddress() };
   }
 
   it("Should allow creator to withdraw funds after goal reached and deadline passed", async function () {
     const { crowd, creator, donor1, crowdAddress } = await loadFixture(deployFixture);
 
-    const goal = ethers.parseEther("1.0");
-    const duration = 60;
-    
-    await crowd.connect(creator).createCampaign("Test Campaign", "Desc", goal, duration);
+    await crowd.connect(creator).createCampaign("Success Project", "Desc", ethers.parseEther("1.0"), 60);
     
     await crowd.connect(donor1).contribute(0, { value: ethers.parseEther("1.0") });
 
-    expect(await ethers.provider.getBalance(crowdAddress)).to.equal(ethers.parseEther("1.0"));
+    await time.increase(61);
 
-    await expect(
-      crowd.connect(creator).withdraw(0)
-    ).to.be.revertedWith("Campaign still active");
+    await expect(crowd.connect(creator).withdraw(0))
+      .to.changeEtherBalance(creator, ethers.parseEther("1.0"));
+      
+    expect(await ethers.provider.getBalance(crowdAddress)).to.equal(0);
+  });
+
+  it("Should allow donors to refund if goal NOT reached and deadline passed", async function () {
+    const { crowd, creator, donor1, crowdAddress } = await loadFixture(deployFixture);
+
+    await crowd.connect(creator).createCampaign("Failed Project", "Desc", ethers.parseEther("10.0"), 60);
+    
+    await crowd.connect(donor1).contribute(0, { value: ethers.parseEther("1.0") });
+
+    await expect(crowd.connect(donor1).refund(0)).to.be.revertedWith("Campaign still active");
 
     await time.increase(61);
 
-    const balanceBefore = await ethers.provider.getBalance(creator.address);
-    
-    const tx = await crowd.connect(creator).withdraw(0);
-    const receipt = await tx.wait();
-
-    const gasUsed = receipt.gasUsed * receipt.gasPrice; // для ethers v6 возможно другое получение gasPrice, но для теста пока опустим точную проверку до wei
-
-    const campaign = await crowd.campaigns(0);
-    expect(campaign.finalized).to.be.true;
-    expect(campaign.fundsWithdrawn).to.be.true;
+    await expect(crowd.connect(donor1).refund(0))
+      .to.changeEtherBalance(donor1, ethers.parseEther("1.0"));
 
     expect(await ethers.provider.getBalance(crowdAddress)).to.equal(0);
   });
