@@ -18,7 +18,7 @@ export default function Home() {
   const [donateAmounts, setDonateAmounts] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
-    // В TypeScript нужно явно сказать, что мы обращаемся к window как к любому объекту
+
     if (typeof window !== "undefined" && (window as any).ethereum) {
       (window as any).ethereum.on("accountsChanged", (accs: string[]) => setAccount(accs[0]));
       connectWallet();
@@ -396,7 +396,7 @@ export default function Home() {
             </div>
             <div className="flex gap-8 text-sm text-slate-500 font-medium">
               <a className="hover:text-white transition-colors" href="#">Documentation</a>
-              <a className="hover:text-white transition-colors" href="#">GitHub</a>
+              <a className="hover:text-white transition-colors" href="https://github.com/adilzhankad/blockchain_final_project">GitHub</a>
             </div>
           </div>
         </footer>
