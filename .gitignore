@@ -1,7 +1,50 @@
-node_modules
+
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Hardhat
+# =========================
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain/
+hardhat-coverage/
 .env
-cache
-artifacts
-coverage
-dist
+
+# =========================
+# Frontend (если React / Vite / Next)
+# =========================
+dist/
+build/
+.next/
+out/
+.vite/
+
+# =========================
+# OS / IDE мусор
+# =========================
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# =========================
+# Local configs
+# =========================
+.env.local
+.env.development
+.env.production
+
+# =========================
+# Test files / temp
+# =========================
+*.log
+.tmp/
