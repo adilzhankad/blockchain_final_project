@@ -6,7 +6,7 @@
       "contentHash": "55cf0d46994c9ac27599001321276333",
       "sourceName": "contracts/Crowdfunding.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -43,7 +43,7 @@
       "contentHash": "3d5ebd4be62a6bce8c9a512e338b2e90",
       "sourceName": "contracts/RewardToken.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -82,7 +82,7 @@
       "contentHash": "59dfce11284f2636db261df9b6a18f81",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -123,7 +123,7 @@
       "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -161,7 +161,7 @@
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -197,7 +197,7 @@
       "contentHash": "5041977bbe908de2e6ed0270447f79ad",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -235,7 +235,7 @@
       "contentHash": "9261adf6457863de3e9892f51317ec89",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
@@ -271,7 +271,7 @@
       "contentHash": "513778b30d2750f5d2b9b19bbcf748a5",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
-        "version": "0.8.20",
+        "version": "0.8.28",
         "settings": {
           "evmVersion": "paris",
           "optimizer": {
