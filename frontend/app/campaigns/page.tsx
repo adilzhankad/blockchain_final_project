@@ -126,7 +126,7 @@ export default function CampaignsPage() {
               <h1 className="text-2xl font-black tracking-tight">CryptoFund</h1>
             </div>
             <nav className="hidden md:flex gap-6">
-               <Link href="/" className="text-slate-400 hover:text-white transition">Home</Link>
+               <Link href="/" className="text-slate-400 hover:text-white transition">Create</Link>
                <Link href="/campaigns" className="text-white font-bold border-b-2 border-[#0657f9]">Active Campaigns</Link>
             </nav>
             <button onClick={connectWallet} className="bg-[#0657f9] hover:bg-[#0657f9]/90 text-white px-6 py-2.5 rounded-full font-bold text-sm">

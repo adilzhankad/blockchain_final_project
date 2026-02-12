@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import Link from "next/link"; // Импортируем Link для навигации
+import Link from "next/link"; 
 import CrowdfundingABI from "../abi/Crowdfunding.json";
 
 const CONTRACT_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
